@@ -1,0 +1,36 @@
+\documentclass[a4paper, 11pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{float}
+\usepackage{fancyhdr}
+\bibliographystyle{plainnat}
+\newcommand{\uproman}[1]{\uppercase\expandafter{\romannumeral#1}}
+
+\title {Development and construction of a 2D Laser Scanner}
+\author {Niklas H}
+\date {\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{Introduction}
+
+\section{Prototype calculations}
+%pic
+The main assumptions of the Prototype are a operiational voltage of 5V and a maximum laser power of 100mW. The Peltier element can produce a maximum of 3.8V at 8.4W. Assuming linear behaviour \footnote{This is most likely untrue but will suffice for the first calculations.}, a slope of $S = \frac{3.8V}{8.4W}=0.45\frac{V}{W}$ can be calculated. With the maximum laser power of $P_{max}=100mW=0.1W$, the Peltier element is expected to produce a maximum of $S\cdot P_{max} = 0.45\frac{V}{W}\cdot 0.1W = 0.045V$. In order to amplify this signal, an operational amplifier is used (specificially a LM358), with a gain factor of $\beta = \frac{5V}{0.045V} = 111$. Two resistors are used to set this gain, with $R_1$ connecting the inverting pin to ground and $R_2$ connecting the output to the inverting pin (the positive lead of the Peltier element is connected to the noninverting pin). The formula describing the op-amp gain is as follows:
+\begin{equation}
+111 = 1 + \frac{R_2}{R_1} \Leftrightarrow
+110 = \frac{R_2}{R_1}
+\end{equation}
+With $R_2$ arbitrarily chosen as 10k$\Omega$, $R_1$ is 90$\Omega$, which is rounded to 100$\Omega$. The resulting gain of $1+\frac{10000\Omega}{100\Omega}=101$ is acceptable. \\
+\section{Acknowledgements}
+
+
+%\addcontentsline{toc}{section}{References}
+%\bibliography{literature}
+\end{document}
