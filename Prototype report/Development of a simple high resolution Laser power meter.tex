@@ -19,7 +19,7 @@
 \tableofcontents
 \newpage
 \section{Introduction}
-
+One of the most important categories of tools in every laboratory is measuring equipment. However, these tools, especially for lasers can be very expensive. The goal of this project is to build and test a simple high resolution Laser power meter. This power meter utilizes the Seebeck-Effect to convert the thermal energy of the laser beam into an electric current, which is measured. It is intended to be able to measure smaller lasers (e.g. 5mW laser pointers) and therefore must be very sensitive.
 \section{Prototype calculations}
 %pic
 The main assumptions of the Prototype are a operiational voltage of 5V and a maximum laser power of 100mW. The Peltier element can produce a maximum of 3.8V at 8.4W. Assuming linear behaviour \footnote{This is most likely untrue but will suffice for the first calculations.}, a slope of $S = \frac{3.8V}{8.4W}=0.45\frac{V}{W}$ can be calculated. With the maximum laser power of $P_{max}=100mW=0.1W$, the Peltier element is expected to produce a maximum of $S\cdot P_{max} = 0.45\frac{V}{W}\cdot 0.1W = 0.045V$. In order to amplify this signal, an operational amplifier is used (specificially a LM358), with a gain factor of $\beta = \frac{5V}{0.045V} = 111$. Two resistors are used to set this gain, with $R_1$ connecting the inverting pin to ground and $R_2$ connecting the output to the inverting pin (the positive lead of the Peltier element is connected to the noninverting pin). The formula describing the op-amp gain is as follows:
@@ -27,7 +27,7 @@ The main assumptions of the Prototype are a operiational voltage of 5V and a max
 111 = 1 + \frac{R_2}{R_1} \Leftrightarrow
 110 = \frac{R_2}{R_1}
 \end{equation}
-With $R_2$ arbitrarily chosen as 10k$\Omega$, $R_1$ is 90$\Omega$, which is rounded to 100$\Omega$. The resulting gain of $1+\frac{10000\Omega}{100\Omega}=101$ is acceptable. \\
+With $R_2$ arbitrarily chosen as 220k$\Omega$, $R_1$ is 20k$\Omega$, which is changed to 22k$\Omega$ due to availability. The resulting gain of $1+\frac{220000\Omega}{20000\Omega}=101$ is acceptable. \\
 \section{Acknowledgements}
 
 
